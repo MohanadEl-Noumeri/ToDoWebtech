@@ -1,16 +1,36 @@
 package com.example.demo;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 public class Todo {
-    @RestController
-    public class HelloController {
+    private String title;
+    private String description;
+    private boolean completed;
 
-        @GetMapping("/")
-        public String index() {
-            return "Greetings from Spring Boot!";
-        }
-
+    public Todo(String title, String description) {
+        this.title = title;
+        this.description = description;
     }
+
+    public String getTitle() {
+        return title;
+    }
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public boolean isCompleted() {
+        return completed;
+    }
+    public void setCompleted(boolean completed) {
+        this.completed = completed;
+    }
+
+
 }
