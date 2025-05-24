@@ -8,6 +8,7 @@ import java.util.List;
 @RestController
 public class TodoController {
 
+    // auf localhost:8080/todos wird es angezeigt !
     @GetMapping("/todos")
     public List<Todo> testRouter(){
         return List.of(
