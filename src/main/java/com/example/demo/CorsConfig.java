@@ -12,6 +12,7 @@ public class CorsConfig implements WebMvcConfigurer {
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")  // Erlaubt CORS für alle Endpunkte
                 .allowedOrigins("http://localhost:5173")  // Erlaubt nur dein Vue-Frontend
+                .allowedOrigins("https://todoliste-backend.onrender.com")  // Extra hinzugefügt damit von Render gerendert werden kann!
                 .allowedMethods("GET", "POST", "PUT", "DELETE");  // Erlaubte HTTP-Methoden
     }
 }
