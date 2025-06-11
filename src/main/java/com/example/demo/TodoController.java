@@ -1,12 +1,18 @@
 package com.example.demo;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.logging.Logger;
 
 @RestController
 public class TodoController {
+
+    @Autowired
+    TodoService service;
+
 
     // auf localhost:8080/todos wird es angezeigt !
     @GetMapping("/todos")
@@ -18,5 +24,6 @@ public class TodoController {
                 new Todo("Erinnern", "Hier wirst du an deinen Aufgaben erinnert."),
                 new Todo("Kategorisieren", "Hier kannst du deine Aufgaben Kategorisieren.")
         );
+
     }
 }
