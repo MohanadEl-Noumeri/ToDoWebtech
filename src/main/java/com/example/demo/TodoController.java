@@ -41,4 +41,13 @@ public class TodoController {
      repository.save(todo);
      return ResponseEntity.ok(todo);
     }
+
+    @DeleteMapping("/todos/{id}")
+    public ResponseEntity<Void> deleteOneTodo(@PathVariable Long id) {
+        if(!repository.existsById(id)) {
+            return ResponseEntity.notFound().build();
+        }
+        repository.deleteById(id);
+        return ResponseEntity.noContent().build();
+    }
 }
