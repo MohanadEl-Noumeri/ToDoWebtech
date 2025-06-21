@@ -1,9 +1,11 @@
 package com.example.demo;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:5173")
@@ -26,5 +28,17 @@ public class TodoController {
     @DeleteMapping("/todos")
     public void deleteAllTodos() {
         repository.deleteAll();
+    }
+
+    @PutMapping("/todos/{id}")
+    public ResponseEntity<Todo> updateTodo(@PathVariable Long id){
+     Optional<Todo> todoOpt = repository.findById(id);
+     if(todoOpt.isEmpty()) {
+         return ResponseEntity.notFound().build();
+     }
+     Todo todo = todoOpt.get();
+     todo.completed = !todo.completed;
+     repository.save(todo);
+     return ResponseEntity.ok(todo);
     }
 }
