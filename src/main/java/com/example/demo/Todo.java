@@ -17,6 +17,12 @@ public class Todo {
     public String description;
     public boolean completed = false; // Direkt initialisiert
 
+    public Todo() {}
+    public Todo(Long id, String title, String description, boolean completed) {
+        this.title = title;
+        this.description = description;
+        this.completed = completed;
+    }
 }
 
 
